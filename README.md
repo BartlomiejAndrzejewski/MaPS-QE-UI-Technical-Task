@@ -1,6 +1,6 @@
 # MaPS QE UI Technical Task
 
-Your task is to create a functional automated UI test suite using Playwright with Typescript. We would prefer you to use tools like Playwright or Cypress. However should you opt to use a different tool, such as Selenium with Java, we will inquire as to your reasoning's into why you did not opt for an alternative framework or language.
+Your task is to create a functional automated UI test suite using Playwright with Typescript. 
 
 There are no trick questions; we want to see your solution work, analyse your code structure, and understand your thought process.
 
