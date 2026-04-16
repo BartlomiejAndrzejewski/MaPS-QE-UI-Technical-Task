@@ -10,7 +10,11 @@ On a public facing UK Government webpage 'Calculate your holiday entitlement', p
 
 You have autonomy on this task, the only remits are that you keep to the language and tools we have mentioned, that you provide a working solution and clear instructions on how to build and execute your solution.
 
-We are looking for a demonstration of your technical skills, your ability to write a clear working solution that can be shared, and your 'tester mindset'.
+We are looking for a demonstration of your technical skills, your ability to write a clear working solution that can be shared, and your 'tester mindset'. We would like to see evidence of:
+* Maintenable Code
+* Readable Code
+* Scalable Code
+* Best Practices
 
 The URL for 'Calculate your holiday entitlement': https://www.gov.uk/calculate-your-holiday-entitlement
 
