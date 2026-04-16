@@ -7,7 +7,7 @@ There are no trick questions; we want to see your solution work, analyse your co
 ## 📝 The Task - Part 1
 
 On a public facing UK Government webpage 'Calculate your holiday entitlement', please write a working automated UI test suite. If the language/framework you decide to use supports BDD/Gherkin, you have the choice to use this or not. Though its usage is optional and therefore won't impact scoring.
-An example feature file has been added to this repository should it be needed for reference.
+
 
 You have autonomy on this task, the only remits are that you keep to the language and tools we have mentioned, that you provide a working solution and clear instructions on how to build and execute your solution.
 
