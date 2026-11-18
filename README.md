@@ -1,8 +1,10 @@
 # MaPS QE UI Technical Task
 
-Your task is to create a functional automated UI test suite using Playwright with Typescript. 
+Your task is to create a functional automated UI test suite.
 
 There are no trick questions; we want to see your solution work, analyse your code structure, and understand your thought process.
+
+We are aware that AI can be used to help with this, and we welcome constructive use of AI tools. If you want some guidance as to how we use AI, please refer to the Civil Service's AI in Recruitment guidance page: https://www.civil-service-careers.gov.uk/artificial-intelligence-and-recruitment/
 
 ## 📝 The Task - Part 1
 
