@@ -10,7 +10,7 @@ We are aware that AI can be used to help with this, and we welcome constructive 
 
 On a public facing UK Government webpage 'Calculate your holiday entitlement', please write a working automated UI test suite. 
 
-You have autonomy on this task, the only remits are that you keep to the language and tools we have mentioned, that you provide a working solution and clear instructions on how to build and execute your solution.
+You have autonomy on this task, the only remits are that you provide a working solution and clear instructions on how to build and execute your solution.
 
 We are looking for a demonstration of your technical skills, your ability to write a clear working solution that can be shared, and your 'tester mindset'. We would like to see evidence of:
 * Maintenable Code
@@ -53,4 +53,4 @@ If you have the time and inclination, feel free to attempt Task 2 (bonus task), 
 
 ## 📨 Presenting/Submitting Your Solution
 
-Please download and email your solution from a private Github repository you have created and send the Zip back to us. Any issues please do get in touch with the recruiter you have been speaking with.
+Please email your solution with a public link to the Github repository you have created for the project. Any issues please do get in touch with the recruiter you have been speaking with.
