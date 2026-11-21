@@ -61,7 +61,7 @@ HTML report is uploaded as a build artifact.
   Command Prompt.
 
 > The `npm start` steps further down are only for the local accessibility page
-> (Part 2).
+> (Part 2). Run them from the repository root, not from `tests/e2e-playwright`.
 
 ## 📝 The Task - Part 1
 
