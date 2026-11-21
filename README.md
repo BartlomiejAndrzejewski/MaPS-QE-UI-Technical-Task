@@ -6,6 +6,57 @@ There are no trick questions; we want to see your solution work, analyse your co
 
 We are aware that AI can be used to help with this, and we welcome constructive use of AI tools. If you want some guidance as to how we use AI, please refer to the Civil Service's AI in Recruitment guidance page: https://www.civil-service-careers.gov.uk/artificial-intelligence-and-recruitment/
 
+## Running the Playwright tests
+
+Playwright and TypeScript setup for UI tests of the GOV.UK
+[Calculate your holiday entitlement](https://www.gov.uk/calculate-your-holiday-entitlement)
+page. The current example tests visit playwright.dev to verify the setup;
+they do not yet test the calculator.
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) with npm (developed with Node v26; the latest
+  LTS release is recommended)
+- Git
+
+### Setup
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Install the Playwright browsers:
+   ```bash
+   npm run install:browsers
+   ```
+
+### Run the tests
+```bash
+npm test
+```
+
+Useful variations:
+```bash
+npx playwright test --project=chromium   # one browser only
+npx playwright test --headed             # watch the browser
+npx playwright test --ui                 # interactive UI mode
+```
+
+### View the report
+```bash
+npm run test:report
+```
+
+### Continuous integration
+The suite runs on GitHub Actions for every push and pull request to `main`. The
+HTML report is uploaded as a build artifact.
+
+### Troubleshooting
+- On Windows PowerShell, if `npm` is blocked by the execution policy, run
+  `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, or use
+  Command Prompt.
+
+> The `npm start` steps further down are only for the local accessibility page
+> (Part 2).
+
 ## 📝 The Task - Part 1
 
 On a public facing UK Government webpage 'Calculate your holiday entitlement', please write a working automated UI test suite. 
