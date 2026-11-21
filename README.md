@@ -19,16 +19,22 @@ they do not yet test the calculator.
 - Git
 
 ### Setup
-1. Install dependencies:
+1. Go to the test project:
+   ```bash
+   cd tests/e2e-playwright
+   ```
+2. Install dependencies:
    ```bash
    npm install
    ```
-2. Install the Playwright browsers:
+3. Install the Playwright browsers:
    ```bash
    npm run install:browsers
    ```
 
 ### Run the tests
+From tests/e2e-playwright:
+
 ```bash
 npm test
 ```
@@ -55,7 +61,7 @@ HTML report is uploaded as a build artifact.
   Command Prompt.
 
 > The `npm start` steps further down are only for the local accessibility page
-> (Part 2).
+> (Part 2). Run them from the repository root, not from `tests/e2e-playwright`.
 
 ## 📝 The Task - Part 1
 
