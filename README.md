@@ -8,10 +8,12 @@ We are aware that AI can be used to help with this, and we welcome constructive 
 
 ## Running the Playwright tests
 
-Playwright and TypeScript setup for UI tests of the GOV.UK
+Playwright and TypeScript tests, written as Gherkin scenarios with
+[playwright-bdd](https://vitalets.github.io/playwright-bdd/), for the GOV.UK
 [Calculate your holiday entitlement](https://www.gov.uk/calculate-your-holiday-entitlement)
-page. The current example tests visit playwright.dev to verify the setup;
-they do not yet test the calculator.
+page. Running `npm test` generates the tests from the feature files, then runs
+them. The suite currently contains one smoke scenario that opens the start page
+and checks its title, heading and Start now button.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm (developed with Node v26; the latest
@@ -39,11 +41,13 @@ From tests/e2e-playwright:
 npm test
 ```
 
+The generated tests are written to `tests/e2e-playwright/.features-gen`, which
+git ignores. Don't edit them: change the feature files and steps instead.
+
 Useful variations:
 ```bash
-npx playwright test --project=chromium   # one browser only
-npx playwright test --headed             # watch the browser
-npx playwright test --ui                 # interactive UI mode
+npm test -- --project=chromium   # one browser only
+npm test -- --headed             # watch the browser
 ```
 
 ### View the report
