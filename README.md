@@ -55,9 +55,16 @@ npm test -- --headed             # watch the browser
 npm run test:report
 ```
 
+### Type check
+From tests/e2e-playwright:
+
+```bash
+npm run typecheck
+```
+
 ### Continuous integration
-The suite runs on GitHub Actions for every push and pull request to `main`. The
-HTML report is uploaded as a build artifact.
+On every push and pull request to `main`, GitHub Actions type-checks the code and
+then runs the suite. The HTML report is uploaded as a build artifact.
 
 ### Troubleshooting
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
