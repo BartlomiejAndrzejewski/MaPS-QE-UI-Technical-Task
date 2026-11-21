@@ -8,9 +8,10 @@ We are aware that AI can be used to help with this, and we welcome constructive 
 
 ## Running the Playwright tests
 
-UI tests for the GOV.UK
+Playwright and TypeScript setup for UI tests of the GOV.UK
 [Calculate your holiday entitlement](https://www.gov.uk/calculate-your-holiday-entitlement)
-page, written with Playwright and TypeScript.
+page. The current example tests visit playwright.dev to verify the setup;
+they do not yet test the calculator.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm (developed with Node v26; the latest
