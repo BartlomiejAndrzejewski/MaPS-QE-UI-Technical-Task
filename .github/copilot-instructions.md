@@ -42,4 +42,3 @@ accessibility audit.
 
 ## Avoid
 - Do not suggest switching tools or rewriting the framework.
-- 
