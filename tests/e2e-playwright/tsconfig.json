@@ -7,7 +7,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "types": [ "node" ]
+    "types": ["node"]
   },
-  "include": [ "steps", "support", "playwright.config.ts" ]
+  "include": ["steps", "support", "playwright.config.ts"]
 }
