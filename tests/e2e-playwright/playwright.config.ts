@@ -9,15 +9,14 @@ import { defineBddConfig } from 'playwright-bdd';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+const testDir = defineBddConfig({
+  features: 'features/**/*.feature',
+  steps: 'steps/**/*.ts',
+});
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-
-const testDir = defineBddConfig({
-    features: 'features/**/*.feature',
-    steps: 'steps/**/*.ts',
-});
-
 export default defineConfig({
   testDir,
   /* Run tests in files in parallel */
