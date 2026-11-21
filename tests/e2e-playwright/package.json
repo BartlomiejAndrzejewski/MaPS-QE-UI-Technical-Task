@@ -5,11 +5,13 @@
   "scripts": {
     "test": "bddgen && playwright test",
     "test:report": "playwright show-report",
-    "install:browsers": "playwright install"
+    "install:browsers": "playwright install",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.6",
-    "playwright-bdd": "^9.2.1"
+    "playwright-bdd": "^9.2.1",
+    "typescript": "^7.0.2"
   }
 }
