@@ -89,9 +89,20 @@ From tests/e2e-playwright:
 npm run typecheck
 ```
 
+### Lint
+From tests/e2e-playwright:
+
+```bash
+npm run lint
+```
+
+ESLint checks the pages, steps, fixtures and support folders, including the
+Playwright rules and unawaited promises. No output means no problems.
+
 ### Continuous integration
-On every push and pull request to `main`, GitHub Actions type-checks the code and
-then runs the suite. The HTML report is uploaded as a build artifact.
+On every push and pull request to `main`, GitHub Actions type-checks and lints
+the code and then runs the suite. The HTML report is uploaded as a build
+artifact.
 
 ### Troubleshooting
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
