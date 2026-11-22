@@ -17,8 +17,8 @@ click-through journeys through the calculator.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm: version 20.19+, 22.13+ or 24+
-  (odd-numbered releases such as 21 and 23 are not supported). Developed
-  with Node v26; the latest LTS release is recommended.
+  (Node 21 and 23 are not supported). Developed with Node v26; the latest
+  LTS release is recommended.
 - Git
 
 ### Setup
