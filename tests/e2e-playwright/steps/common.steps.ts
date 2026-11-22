@@ -1,7 +1,4 @@
-import { expect } from '@playwright/test';
-import { createBdd } from 'playwright-bdd';
-
-const { Then } = createBdd();
+import { expect, Then } from '../fixtures/holiday-entitlement/fixtures';
 
 Then('the page title should be {string}', async ({ page }, title: string) => {
   await expect(page).toHaveTitle(title);

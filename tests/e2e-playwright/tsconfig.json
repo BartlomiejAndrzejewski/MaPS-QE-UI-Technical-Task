@@ -9,5 +9,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["pages", "steps", "support", "playwright.config.ts"]
+  "include": ["fixtures", "pages", "steps", "support", "playwright.config.ts"]
 }
