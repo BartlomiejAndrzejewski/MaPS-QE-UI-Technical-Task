@@ -46,10 +46,10 @@ git ignores. Don't edit them: change the feature files and steps instead.
 
 Useful variations:
 ```bash
-npm test -- --project=chromium           # one browser only
-npm test -- --headed                     # watch the browser
-npm test -- --grep @smoke                # smoke scenarios only
-npm test -- --grep @holiday-entitlement  # one service only
+npm test -- --project=chromium             # one browser only
+npm test -- --headed                       # watch the browser
+npm test -- --grep "@smoke"                # smoke scenarios only
+npm test -- --grep "@holiday-entitlement"  # one service only
 ```
 
 ### Project structure
@@ -92,6 +92,9 @@ then runs the suite. The HTML report is uploaded as a build artifact.
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
   `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, or use
   Command Prompt.
+
+- On Windows PowerShell, put tags in quotes, for example
+  `npm test -- --grep "@smoke"`, because `@` has a special meaning there.
 
 > The `npm start` steps further down are only for the local accessibility page
 > (Part 2). Run them from the repository root, not from `tests/e2e-playwright`.
