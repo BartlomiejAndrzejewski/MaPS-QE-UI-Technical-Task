@@ -15,6 +15,19 @@ export abstract class BasePage {
     return this.mainContent.getByRole('button', { name: 'Continue' });
   }
 
+  get cookieBanner(): Locator {
+    return this.page.getByRole('region', { name: 'Cookies on GOV.UK' });
+  }
+
+  async rejectCookies(): Promise<void> {
+    await this.cookieBanner
+      .getByRole('button', { name: 'Reject additional cookies' })
+      .click();
+    await this.cookieBanner
+      .getByRole('button', { name: 'Hide cookie message' })
+      .click();
+  }
+
   async goto(path: string): Promise<void> {
     await this.page.goto(path);
   }
