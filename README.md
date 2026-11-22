@@ -92,7 +92,6 @@ then runs the suite. The HTML report is uploaded as a build artifact.
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
   `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, or use
   Command Prompt.
-
 - On Windows PowerShell, put tags in quotes, for example
   `npm test -- --grep "@smoke"`, because `@` has a special meaning there.
 
