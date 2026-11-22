@@ -16,7 +16,7 @@ export async function rejectAdditionalCookies(
   await context.addCookies([
     {
       name: 'cookies_policy',
-      value: encodeURIComponent(JSON.stringify(policy)),
+      value: JSON.stringify(policy),
       url: baseURL,
     },
     { name: 'cookies_preferences_set', value: 'true', url: baseURL },
