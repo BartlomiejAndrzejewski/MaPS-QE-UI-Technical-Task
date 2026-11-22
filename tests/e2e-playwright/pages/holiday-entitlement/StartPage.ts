@@ -9,7 +9,6 @@ export class StartPage extends BasePage {
 
   async open(): Promise<void> {
     await this.goto(routes.start);
-    await this.rejectCookies();
   }
 
   async start(): Promise<void> {

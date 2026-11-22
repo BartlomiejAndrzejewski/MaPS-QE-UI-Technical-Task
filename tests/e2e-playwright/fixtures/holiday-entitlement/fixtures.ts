@@ -2,6 +2,7 @@ import { test as base, createBdd } from 'playwright-bdd';
 import { OutcomePage } from '../../pages/holiday-entitlement/OutcomePage';
 import { QuestionPage } from '../../pages/holiday-entitlement/QuestionPage';
 import { StartPage } from '../../pages/holiday-entitlement/StartPage';
+import { rejectAdditionalCookies } from '../../support/cookies';
 
 type Fixtures = {
   startPage: StartPage;
@@ -10,6 +11,10 @@ type Fixtures = {
 };
 
 export const test = base.extend<Fixtures>({
+  context: async ({ context }, use) => {
+    await rejectAdditionalCookies(context);
+    await use(context);
+  },
   startPage: async ({ page }, use) => {
     await use(new StartPage(page));
   },
