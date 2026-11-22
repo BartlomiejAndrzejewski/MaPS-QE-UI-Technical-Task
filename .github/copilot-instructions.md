@@ -30,7 +30,8 @@ accessibility audit.
 - Flag hard-coded waits such as `waitForTimeout`. Use auto-waiting and
   web-first assertions.
 - Page objects hold locators and actions only. Assertions belong in specs.
-- Test data belongs in data files, not repeated in specs.
+- Test data belongs in data files, not repeated in TypeScript specs.
+  Literal values in Gherkin scenarios and Examples tables are fine.
 - Tests must be independent and must not rely on execution order.
 
 ## Security
