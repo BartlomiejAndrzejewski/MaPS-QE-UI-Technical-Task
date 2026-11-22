@@ -24,6 +24,8 @@ jobs:
       run: npm ci
     - name: Type check
       run: npm run typecheck
+    - name: Lint
+      run: npm run lint
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
