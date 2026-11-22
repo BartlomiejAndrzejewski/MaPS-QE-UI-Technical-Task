@@ -11,10 +11,6 @@ export abstract class BasePage {
     return this.mainContent.getByRole('heading', { level: 1 });
   }
 
-  get continueButton(): Locator {
-    return this.mainContent.getByRole('button', { name: 'Continue' });
-  }
-
   async goto(path: string): Promise<void> {
     await this.page.goto(path);
   }

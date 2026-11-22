@@ -6,6 +6,10 @@ export class QuestionPage extends BasePage {
     return this.mainContent.getByRole('textbox');
   }
 
+  get continueButton(): Locator {
+    return this.mainContent.getByRole('button', { name: 'Continue' });
+  }
+
   radio(label: string): Locator {
     return this.mainContent.getByRole('radio', { name: label, exact: true });
   }
