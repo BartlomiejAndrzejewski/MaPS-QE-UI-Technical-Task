@@ -1,4 +1,4 @@
-@smoke
+@holiday-entitlement @smoke @regression
 Feature: Holiday entitlement calculator start page
   As a user
   I want to open the holiday entitlement calculator
