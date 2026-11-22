@@ -11,8 +11,8 @@ type Fixtures = {
 };
 
 export const test = base.extend<Fixtures>({
-  context: async ({ context }, use) => {
-    await rejectAdditionalCookies(context);
+  context: async ({ context, baseURL }, use) => {
+    await rejectAdditionalCookies(context, baseURL);
     await use(context);
   },
   startPage: async ({ page }, use) => {
