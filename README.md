@@ -63,7 +63,7 @@ added alongside holiday entitlement.
 | `steps/` | Step definitions (`common.steps.ts` is shared by all services) |
 | `pages/` | Page objects, with locators and actions only |
 | `fixtures/` | Fixtures that give each step its page objects |
-| `support/` | Shared constants such as routes |
+| `support/` | Shared helpers and constants, such as routes and cookie preferences |
 
 ### Tags
 | Kind | Tags | Use |
@@ -71,6 +71,11 @@ added alongside holiday entitlement.
 | Service | `@holiday-entitlement` | Run one service |
 | Suite | `@smoke`, `@regression` | Choose how much to run |
 | Type | `@journey` | The kind of check |
+
+### Cookie banner
+Each test starts with the GOV.UK cookie preference set to "reject additional
+cookies" (see `support/cookies.ts`), so the banner never appears and test runs
+do not send analytics.
 
 ### View the report
 ```bash
