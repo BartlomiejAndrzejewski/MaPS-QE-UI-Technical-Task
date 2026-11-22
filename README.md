@@ -12,8 +12,8 @@ Playwright and TypeScript tests, written as Gherkin scenarios with
 [playwright-bdd](https://vitalets.github.io/playwright-bdd/), for the GOV.UK
 [Calculate your holiday entitlement](https://www.gov.uk/calculate-your-holiday-entitlement)
 page. Running `npm test` generates the tests from the feature files, then runs
-them. The suite currently contains one smoke scenario that opens the start page
-and checks its title, heading and Start now button.
+them. The suite contains a smoke scenario for the start page and five
+click-through journeys through the calculator.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm (developed with Node v26; the latest
@@ -46,9 +46,31 @@ git ignores. Don't edit them: change the feature files and steps instead.
 
 Useful variations:
 ```bash
-npm test -- --project=chromium   # one browser only
-npm test -- --headed             # watch the browser
+npm test -- --project=chromium           # one browser only
+npm test -- --headed                     # watch the browser
+npm test -- --grep @smoke                # smoke scenarios only
+npm test -- --grep @holiday-entitlement  # one service only
 ```
+
+### Project structure
+Everything lives in `tests/e2e-playwright`. The features, steps, pages and
+fixtures folders each have one subfolder per service, so more services can be
+added alongside holiday entitlement.
+
+| Folder | Contents |
+|---|---|
+| `features/` | Gherkin feature files |
+| `steps/` | Step definitions (`common.steps.ts` is shared by all services) |
+| `pages/` | Page objects, with locators and actions only |
+| `fixtures/` | Fixtures that give each step its page objects |
+| `support/` | Shared constants such as routes |
+
+### Tags
+| Kind | Tags | Use |
+|---|---|---|
+| Service | `@holiday-entitlement` | Run one service |
+| Suite | `@smoke`, `@regression` | Choose how much to run |
+| Type | `@journey` | The kind of check |
 
 ### View the report
 ```bash
