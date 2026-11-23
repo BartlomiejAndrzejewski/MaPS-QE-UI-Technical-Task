@@ -121,6 +121,9 @@ which CI uploads as the `axe-reports` artifact.
 CI runs the tests with two workers to keep the run short. Locally the tests run
 with Playwright's default number of workers.
 
+Pull requests run the tests on Chromium only, to give faster feedback. Pushes
+to `main` run all three browsers.
+
 ### Troubleshooting
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
   `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, or use
