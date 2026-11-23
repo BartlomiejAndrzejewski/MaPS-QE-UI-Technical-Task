@@ -10,6 +10,10 @@ export class QuestionPage extends BasePage {
     return this.mainContent.getByRole('button', { name: 'Continue' });
   }
 
+  get errorMessage(): Locator {
+    return this.mainContent.getByRole('alert');
+  }
+
   radio(label: string): Locator {
     return this.mainContent.getByRole('radio', { name: label, exact: true });
   }
