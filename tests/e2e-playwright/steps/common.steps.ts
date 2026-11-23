@@ -1,6 +1,6 @@
 import { createHtmlReport } from 'axe-html-reporter';
 import { expect, Then } from '../fixtures/holiday-entitlement/fixtures';
-import { describeViolations, runAxe } from '../support/accessibility';
+import { AXE_REPORT_DIR, describeViolations, runAxe } from '../support/accessibility';
 
 Then('the page title should be {string}', async ({ page }, title: string) => {
   await expect(page).toHaveTitle(title);
@@ -16,7 +16,7 @@ Then('the page should have no accessibility violations', async ({ page, $testInf
   createHtmlReport({
     results,
     options: {
-      outputDir: 'axe-reports',
+      outputDir: AXE_REPORT_DIR,
       reportFileName: `${$testInfo.project.name}-${scenario}-retry-${$testInfo.retry}.html`,
     },
   });
