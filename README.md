@@ -14,8 +14,9 @@ Playwright and TypeScript tests, written as Gherkin scenarios with
 page. Running `npm test` generates the tests from the feature files, then runs
 them. The suite contains a smoke scenario for the start page, five
 click-through journeys through the calculator, validation scenarios that
-check the error messages for invalid answers, and calculation scenarios that
-check the entitlement for different working patterns.
+check the error messages for invalid answers, calculation scenarios that
+check the entitlement for different working patterns, and accessibility
+scenarios that run axe on the calculator pages.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm: version 20.19+, 22.13+ or 24+
@@ -54,6 +55,7 @@ npm test -- --headed                       # watch the browser
 npm test -- --grep "@smoke"                # smoke scenarios only
 npm test -- --grep "@validation"           # validation scenarios only
 npm test -- --grep "@calculation"          # calculation scenarios only
+npm test -- --grep "@accessibility"        # accessibility scenarios only
 npm test -- --grep "@holiday-entitlement"  # one service only
 ```
 
@@ -75,7 +77,7 @@ added alongside holiday entitlement.
 |---|---|---|
 | Service | `@holiday-entitlement` | Run one service |
 | Suite | `@smoke`, `@regression` | Choose how much to run |
-| Type | `@journey`, `@validation`, `@calculation` | The kind of check |
+| Type | `@journey`, `@validation`, `@calculation`, `@accessibility` | The kind of check |
 
 ### Cookie banner
 Each test starts with the GOV.UK cookie preference set to "reject additional
