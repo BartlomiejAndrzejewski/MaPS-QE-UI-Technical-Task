@@ -12,8 +12,9 @@ Playwright and TypeScript tests, written as Gherkin scenarios with
 [playwright-bdd](https://vitalets.github.io/playwright-bdd/), for the GOV.UK
 [Calculate your holiday entitlement](https://www.gov.uk/calculate-your-holiday-entitlement)
 page. Running `npm test` generates the tests from the feature files, then runs
-them. The suite contains a smoke scenario for the start page and five
-click-through journeys through the calculator.
+them. The suite contains a smoke scenario for the start page, five
+click-through journeys through the calculator, and validation scenarios that
+check the error messages for invalid answers.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm: version 20.19+, 22.13+ or 24+
@@ -50,6 +51,7 @@ Useful variations:
 npm test -- --project=chromium             # one browser only
 npm test -- --headed                       # watch the browser
 npm test -- --grep "@smoke"                # smoke scenarios only
+npm test -- --grep "@validation"           # validation scenarios only
 npm test -- --grep "@holiday-entitlement"  # one service only
 ```
 
@@ -71,7 +73,7 @@ added alongside holiday entitlement.
 |---|---|---|
 | Service | `@holiday-entitlement` | Run one service |
 | Suite | `@smoke`, `@regression` | Choose how much to run |
-| Type | `@journey` | The kind of check |
+| Type | `@journey`, `@validation` | The kind of check |
 
 ### Cookie banner
 Each test starts with the GOV.UK cookie preference set to "reject additional
