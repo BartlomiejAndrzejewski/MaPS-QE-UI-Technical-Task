@@ -19,8 +19,8 @@ check the entitlement for different working patterns, and accessibility
 scenarios that run axe on the calculator pages.
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) with npm: version 20.19+, 22.13+ or 24+
-  (Node 21 and 23 are not supported). Developed with Node v26; the latest
+- [Node.js](https://nodejs.org/) with npm: version 22.13+ or 24+
+  (Node 23 is not supported). Developed with Node v26; the latest
   LTS release is recommended.
 - Git
 
