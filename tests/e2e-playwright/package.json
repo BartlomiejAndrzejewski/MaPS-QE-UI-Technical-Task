@@ -7,6 +7,13 @@
   },
   "scripts": {
     "test": "bddgen && playwright test",
+    "smoke": "bddgen && playwright test --grep @smoke",
+    "regression": "bddgen && playwright test --grep @regression",
+    "journey": "bddgen && playwright test --grep @journey",
+    "validation": "bddgen && playwright test --grep @validation",
+    "calculation": "bddgen && playwright test --grep @calculation",
+    "accessibility": "bddgen && playwright test --grep @accessibility",
+    "holiday-entitlement": "bddgen && playwright test --grep @holiday-entitlement",
     "test:report": "playwright show-report",
     "install:browsers": "playwright install",
     "typecheck": "tsc --noEmit",

@@ -52,11 +52,13 @@ Useful variations:
 ```bash
 npm test -- --project=chromium             # one browser only
 npm test -- --headed                       # watch the browser
-npm test -- --grep "@smoke"                # smoke scenarios only
-npm test -- --grep "@validation"           # validation scenarios only
-npm test -- --grep "@calculation"          # calculation scenarios only
-npm test -- --grep "@accessibility"        # accessibility scenarios only
-npm test -- --grep "@holiday-entitlement"  # one service only
+npm run smoke                              # smoke scenarios only
+npm run regression                         # the full regression suite
+npm run journey                            # click-through journeys only
+npm run validation                         # validation scenarios only
+npm run calculation                        # calculation scenarios only
+npm run accessibility                      # accessibility scenarios only
+npm run holiday-entitlement                # holiday entitlement service only
 ```
 
 ### Project structure
@@ -119,8 +121,9 @@ with Playwright's default number of workers.
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
   `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, or use
   Command Prompt.
-- On Windows PowerShell, put tags in quotes, for example
-  `npm test -- --grep "@smoke"`, because `@` has a special meaning there.
+- On Windows PowerShell, put tags in quotes if you use `--grep` directly, for
+  example `npm test -- --grep "@smoke"`, because `@` has a special meaning
+  there. The tag scripts, such as `npm run smoke`, do not need quotes.
 
 > The `npm start` steps further down are only for the local accessibility page
 > (Part 2). Run them from the repository root, not from `tests/e2e-playwright`.
