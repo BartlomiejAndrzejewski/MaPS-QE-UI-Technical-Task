@@ -1,6 +1,6 @@
+import { createHtmlReport } from 'axe-html-reporter';
 import { expect, Then } from '../fixtures/holiday-entitlement/fixtures';
 import { describeViolations, runAxe } from '../support/accessibility';
-import { createHtmlReport } from 'axe-html-reporter';
 
 Then('the page title should be {string}', async ({ page }, title: string) => {
   await expect(page).toHaveTitle(title);

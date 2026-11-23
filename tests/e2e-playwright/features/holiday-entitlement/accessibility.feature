@@ -1,7 +1,7 @@
 @holiday-entitlement @accessibility @regression
 Feature: Holiday entitlement calculator accessibility
   As a user of assistive technology
-  I want the calculator pages to meet WCAG 2.2 level AA
+  I want the calculator pages to pass automated WCAG 2.2 AA checks
   So that I can use the calculator
 
   Scenario: The start page has no accessibility violations
