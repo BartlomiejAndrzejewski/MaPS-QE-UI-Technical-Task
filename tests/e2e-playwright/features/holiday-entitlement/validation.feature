@@ -18,7 +18,7 @@ Feature: Holiday entitlement calculator validation
     And I select "for a full leave year" and continue
     Then I should be asked "Number of days worked per week?"
     When I continue without answering
-    Then I should see the error "There are only 7 days in a week"
+    Then I should see the error "There are only 7 days in a week. Please check and enter a correct value."
     And I should be asked "Number of days worked per week?"
 
   Scenario Outline: Days worked per week outside 1 to 7 is rejected
@@ -26,7 +26,7 @@ Feature: Holiday entitlement calculator validation
     And I select "days worked per week" and continue
     And I select "for a full leave year" and continue
     And I enter "<days>" and continue
-    Then I should see the error "There are only 7 days in a week"
+    Then I should see the error "There are only 7 days in a week. Please check and enter a correct value."
     And I should be asked "Number of days worked per week?"
 
     Examples:
@@ -46,11 +46,11 @@ Feature: Holiday entitlement calculator validation
     And I should be asked "Number of hours worked per week?"
 
     Examples:
-      | hours | error                                         |
-      | 169   | You can enter a maximum of 168 hours per week |
-      | 0     | Please enter at least .5 hours worked         |
-      | -5    | Please enter at least .5 hours worked         |
-      | abc   | Please answer this question                   |
+      | hours | error                                                                                                                              |
+      | 169   | You can enter a maximum of 168 hours per week. Do not enter fractions. If you work half-hours, enter .5 for half. For example, 40.5 |
+      | 0     | Please enter at least .5 hours worked. Do not enter fractions. If you work half-hours, enter .5 for half. For example, 40.5         |
+      | -5    | Please enter at least .5 hours worked. Do not enter fractions. If you work half-hours, enter .5 for half. For example, 40.5         |
+      | abc   | Please answer this question                                                                                                        |
 
   Scenario: An impossible employment start date is rejected
     When I select "No" and continue
@@ -99,10 +99,10 @@ Feature: Holiday entitlement calculator validation
     And I should be asked "How many hours has the employee worked in the pay period?"
 
     Examples:
-      | hours | error                                      |
-      | 0     | You need to enter a number greater than 0  |
-      | -5    | You need to enter a number greater than 0  |
-      | abc   | Please answer this question                |
+      | hours | error                                                                                                                         |
+      | 0     | You need to enter a number greater than 0. Do not enter fractions. If you work half-hours, enter .5 for half. For example 4.5 |
+      | -5    | You need to enter a number greater than 0. Do not enter fractions. If you work half-hours, enter .5 for half. For example 4.5 |
+      | abc   | Please answer this question                                                                                                   |
 
   Scenario: A shift pattern with fewer days than shifts is rejected
     When I select "No" and continue
@@ -114,5 +114,5 @@ Feature: Holiday entitlement calculator validation
     When I enter "5" and continue
     Then I should be asked "How many days in the shift pattern?"
     When I enter "3" and continue
-    Then I should see the error "You need to enter a number greater than or equal to the number of shifts you work"
+    Then I should see the error "You need to enter a number greater than or equal to the number of shifts you work. Do not enter fractions. If you work half-days, enter .5 for half. For example, 4.5"
     And I should be asked "How many days in the shift pattern?"
