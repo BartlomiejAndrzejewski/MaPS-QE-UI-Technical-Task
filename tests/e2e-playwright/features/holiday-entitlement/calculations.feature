@@ -51,7 +51,7 @@ Feature: Holiday entitlement calculator calculations
       | 40    | 6    | 186.7       |
       | 168   | 7    | 672         |
 
-        Scenario Outline: Statutory holiday for someone starting part way through a leave year
+  Scenario Outline: Statutory holiday for someone starting part way through a leave year
     When I select "No" and continue
     And I select "days worked per week" and continue
     And I select "for someone starting part way through a leave year" and continue
@@ -102,7 +102,7 @@ Feature: Holiday entitlement calculator calculations
       | 1        | 3          | 2026      | 2      | 3        | 2026    | 5    | 0.2         |
       | 1        | 1          | 2026      | 31     | 12       | 2026    | 5    | 28          |
 
-        Scenario Outline: Holiday accrued in a pay period for irregular hours
+  Scenario Outline: Holiday accrued in a pay period for irregular hours
     When I select "Yes" and continue
     And I enter the date "1" "1" "2026" and continue
     Then I should be asked "How many hours has the employee worked in the pay period?"
