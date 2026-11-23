@@ -109,6 +109,9 @@ On every push and pull request to `main`, GitHub Actions type-checks and lints
 the code and then runs the suite. The HTML report is uploaded as a build
 artifact.
 
+CI runs the tests with two workers to keep the run short. Locally the tests run
+with Playwright's default number of workers.
+
 ### Troubleshooting
 - On Windows PowerShell, if `npm` is blocked by the execution policy, run
   `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned`, or use
