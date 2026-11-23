@@ -48,6 +48,9 @@ npm test
 The generated tests are written to `tests/e2e-playwright/.features-gen`, which
 git ignores. Don't edit them: change the feature files and steps instead.
 
+The tests run against https://www.gov.uk by default. Set the `BASE_URL`
+environment variable to use another address.
+
 Useful variations:
 ```bash
 npm test                                   # everything, on all three browsers
