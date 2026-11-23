@@ -101,3 +101,48 @@ Feature: Holiday entitlement calculator calculations
       | 1        | 3          | 2026      | 30     | 9        | 2026    | 3    | 9.9         |
       | 1        | 3          | 2026      | 2      | 3        | 2026    | 5    | 0.2         |
       | 1        | 1          | 2026      | 31     | 12       | 2026    | 5    | 28          |
+
+        Scenario Outline: Holiday accrued in a pay period for irregular hours
+    When I select "Yes" and continue
+    And I enter the date "1" "1" "2026" and continue
+    Then I should be asked "How many hours has the employee worked in the pay period?"
+    When I enter "<hours>" and continue
+    Then the outcome should say "The statutory entitlement for this pay period is <entitlement>."
+
+    Examples:
+      | hours | entitlement |
+      | 100   | 12 hours    |
+      | 10    | 1 hour      |
+      | 1     | 0 hours     |
+      | 0.5   | 0 hours     |
+
+  Scenario Outline: Statutory holiday for compressed hours
+    When I select "No" and continue
+    And I select "compressed hours" and continue
+    And I select "for a full leave year" and continue
+    And I enter "<hours>" and continue
+    Then I should be asked "Number of days worked per week?"
+    When I enter "<days>" and continue
+    Then the outcome should say "The statutory holiday entitlement is <entitlement> holiday for the year."
+
+    Examples:
+      | hours | days | entitlement              |
+      | 40    | 4    | 224 hours and 0 minutes  |
+      | 37    | 4    | 207 hours and 12 minutes |
+
+  Scenario Outline: Statutory holiday for shift workers
+    When I select "No" and continue
+    And I select "shifts" and continue
+    And I select "for a full leave year" and continue
+    Then I should be asked "How many hours in each shift?"
+    When I enter "<hours>" and continue
+    Then I should be asked "How many shifts will be worked per shift pattern?"
+    When I enter "<shifts>" and continue
+    Then I should be asked "How many days in the shift pattern?"
+    When I enter "<patternDays>" and continue
+    Then the outcome should say "The statutory holiday entitlement is <entitlement> shifts for the year."
+
+    Examples:
+      | hours | shifts | patternDays | entitlement |
+      | 8     | 5      | 7           | 28          |
+      | 8     | 5      | 14          | 14          |
