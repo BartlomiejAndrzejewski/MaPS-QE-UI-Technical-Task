@@ -18,6 +18,14 @@ When(
   },
 );
 
+When('I continue without answering', async ({ questionPage }) => {
+  await questionPage.clickContinue();
+});
+
+Then('I should see the error {string}', async ({ questionPage }, message: string) => {
+  await expect(questionPage.errorMessage).toContainText(message);
+});
+
 Then('I should be asked {string}', async ({ questionPage }, question: string) => {
   await expect(questionPage.heading).toContainText(question);
 });
