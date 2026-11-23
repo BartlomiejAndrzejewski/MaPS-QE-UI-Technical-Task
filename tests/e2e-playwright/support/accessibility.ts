@@ -7,6 +7,9 @@ import type { AxeResults } from 'axe-core';
 // outside a landmark by design.
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
+// Keep in sync with .gitignore and the artifact path in the CI workflow.
+export const AXE_REPORT_DIR = 'axe-reports';
+
 export async function runAxe(page: Page): Promise<AxeResults> {
   return new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
 }
