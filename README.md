@@ -114,6 +114,7 @@ artifact.
 
 > The `npm start` steps further down are only for the local accessibility page
 > (Part 2). Run them from the repository root, not from `tests/e2e-playwright`.
+> The Part 2 audit is in [Part 2: accessibility audit](#part-2-accessibility-audit).
 
 ## 📝 The Task - Part 1
 
