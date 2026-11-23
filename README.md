@@ -154,6 +154,13 @@ To launch the page locally, follow these simple steps:
    http://localhost:8080/
    ```
 
+## Part 2: accessibility audit
+The accessibility findings, including a formal bug report (BUG-001), are in
+[docs/accessibility-audit.md](docs/accessibility-audit.md). The evidence
+(screenshots and reports from Lighthouse, axe, WAVE and Accessibility Insights)
+is in [docs/evidence](docs/evidence/), with a log of each test in
+[docs/evidence/README.md](docs/evidence/README.md).
+
 ## 🕗 Time Allocation
 
 There's no strict time limit for completing this task before the specified deadline given, we don't expect an extensive number of tests, but a well-rounded selection is appreciated.
