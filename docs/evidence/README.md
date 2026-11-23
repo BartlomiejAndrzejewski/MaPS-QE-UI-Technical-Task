@@ -44,17 +44,18 @@ Enter, and pressed Enter and Space on the Done button. The screenshots `01a` to
 | Every control can be reached and used from the keyboard | Pass | 2.1.1 Keyboard (A) |
 | Focus can leave the page, so there is no keyboard trap | Pass | 2.1.2 No Keyboard Trap (A) |
 | The focus order is logical | Pass | 2.4.3 Focus Order (A) |
-| A focus indicator is visible | Present but very faint on every control | 2.4.7 Focus Visible (AA), 1.4.11 Non-text Contrast (AA) |
-| Feedback after pressing Done | Fail: nothing visible, and the console shows an error | 4.1.3 Status Messages (AA) |
+| A focus indicator is visible | Present but very faint on every control | 2.4.7 Focus Visible (AA) is met; 1.4.11 does not apply to the browser's unmodified default ring |
+| Feedback after pressing Done | Nothing visible, and the console shows an error | Functional/usability observation; 4.1.3 Status Messages (AA) does not require a message here |
 
 **Who is affected:** Keyboard-only and switch users and people with low vision,
 who can't tell which control has focus. Screen reader users also get no response
 from Done.
 
-**Caveat:** WCAG 2.4.7 only requires that a focus indicator is visible, so a
-tester could argue that the browser's default ring technically meets it. The
-stronger concern is contrast (1.4.11): a near-black ring beside a dark border
-gives little change between the focused and unfocused states.
+**Caveat:** WCAG 2.4.7 only requires that a focus indicator is visible, and the
+browser's default ring is. WCAG 1.4.11 exempts focus indicators that the browser
+draws and the page does not change, so the low contrast against the `#333` border
+is not a WCAG failure. It is still worth fixing, because the change between the
+focused and unfocused states is small.
 
 **Suggested fix:** Add a distinct focus style, for example
 `.contact-submit-button:focus-visible { outline: 3px solid #1d70b8; outline-offset: 2px; }`,
@@ -152,7 +153,7 @@ the Issues panel.
 | Finding | WCAG |
 |---|---|
 | The image has no `alt` | 1.1.1 Non-text Content (A) |
-| The fields' only name is a placeholder, with no label | 1.3.1 Info and Relationships (A), 3.3.2 Labels or Instructions (A), 4.1.2 Name, Role, Value (A) |
+| The fields' only name is a placeholder, with no label | 1.3.1 Info and Relationships (A), 3.3.2 Labels or Instructions (A) |
 | `<html>` has no `lang` | 3.1.1 Language of Page (A) |
 | The page has no `<title>` | 2.4.2 Page Titled (A) |
 | The fields have no `autocomplete` | 1.3.5 Identify Input Purpose (AA) |
@@ -241,14 +242,17 @@ is `#333333` and the default focus ring is `rgb(16, 16, 16)` (`03d`).
 **What I saw:**
 - **Placeholder text on white:** 2.32:1. It fails WCAG AA and AAA for normal text,
   large text and UI components. (`08a`)
-- **Focus ring against the button border:** 1.5:1. It fails every check. (`08b`)
+- **Focus ring against the button border:** 1.5:1. WebAIM's checker flags it as a
+  fail, but WCAG 1.4.11 exempts the browser's unmodified default focus ring, so it
+  is not a WCAG failure. (`08b`)
 - **Focus ring against the white page:** 19.02:1. It passes every check. (`08c`)
 
 **What it means:** The placeholder text is below the 4.5:1 minimum for text
 (1.4.3, AA) and even below the 3:1 minimum for large text. The focus ring stands out
 against the white page, but it is a thin line in almost the same dark tone as the
-control's own border, so the change between focused and unfocused is small
-(1.4.11, AA). Neither Lighthouse nor axe reported the placeholder contrast.
+control's own border, so the change between focused and unfocused is small.
+This is advisory, because the ring is the browser's default. Neither Lighthouse
+nor axe reported the placeholder contrast.
 
 **Suggested fix:** Use a darker placeholder colour with at least 4.5:1 contrast on
 white, for example `#767676` or darker, and give the focus ring a colour that
@@ -274,7 +278,7 @@ tab and scrolled the results list.
 **What it means:** WAVE reports the three form fields with no label as errors.
 Lighthouse, axe and Chrome's Issues panel did not, because they accept a
 placeholder as an accessible name. A placeholder disappears when the user types and
-is not a reliable label, so I count this as a real failure (1.3.1, 3.3.2, 4.1.2).
+is not a reliable label, so I count this as a real failure (1.3.1, 3.3.2).
 The other errors and alerts match what Lighthouse and axe found. WAVE reported no
 contrast errors, so it did not catch the placeholder contrast I measured manually
 as 2.32:1 (section 6).
@@ -295,8 +299,9 @@ automated checks, tab stops and needs review.
 - **Tab stops** (`07c`, `07d`): With the visual helper on, the tool drew the tab
   order as Full name, Email, Your message, Done. I recorded Pass for keyboard
   navigation, keyboard traps, tab order and input focus. I recorded Fail for the
-  focus indicator and added the comment "Focus ring is present but very faint,
-  about 1.5:1 against the field border."
+  focus indicator, as my own judgement, and added the comment "Focus ring is
+  present but very faint, about 1.5:1 against the field border." This is advisory:
+  the ring is the browser's default, so it does not establish a WCAG failure.
 - **Needs review: 0 instances** (`07e`).
 
 **A false result I did not keep:** Before I pressed Tab through the page with the
@@ -307,8 +312,8 @@ a side effect of the tool not having observed the tab stops, not as real.
 
 **What it means:** The automated step adds nothing new beyond Lighthouse and axe.
 The useful part is the tab stops view, which shows the keyboard order visually and
-agrees with my manual test. The Focus indicator failure is my own judgement from
-sections 1 and 6, recorded in the tool.
+agrees with my manual test. The Focus indicator Fail is my own judgement from
+sections 1 and 6, recorded in the tool, and is advisory.
 
 **Evidence:** `07a-insights-automated.png`, `07b-insights-automated-image-alt.png`,
 `07c-insights-tab-stops.png`, `07d-insights-tab-stops-results.png`,
