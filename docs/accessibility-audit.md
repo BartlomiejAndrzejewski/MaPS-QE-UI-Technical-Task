@@ -28,9 +28,9 @@ ruleset, which has the same criteria numbers for everything found here.
 I found **21 issues: 4 high, 7 medium and 10 low**. Lighthouse and axe together
 found 5 of the 21. Chrome's Issues panel found two more (findings 14 and 19), and
 WAVE found the missing form labels (finding 1). Accessibility Insights found the
-same three issues as axe. The rest came from manual testing, which is why a tool
-run alone would not be enough: no automated tool detected the blocked scrolling,
-the lack of reflow, the faint focus ring or the silent Done button.
+same three issues as axe's WCAG-only run. The rest came from manual testing, which
+is why a tool run alone would not be enough: no automated tool detected the blocked
+scrolling, the lack of reflow, the faint focus ring or the silent Done button.
 
 A formal bug report is at the end of this file ([BUG-001](#bug-001)).
 
