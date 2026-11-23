@@ -6,6 +6,12 @@ There are no trick questions; we want to see your solution work, analyse your co
 
 We are aware that AI can be used to help with this, and we welcome constructive use of AI tools. If you want some guidance as to how we use AI, please refer to the Civil Service's AI in Recruitment guidance page: https://www.civil-service-careers.gov.uk/artificial-intelligence-and-recruitment/
 
+Where to find things: the test suite is described under
+[Running the Playwright tests](#running-the-playwright-tests), the Part 2
+audit is in [Part 2: accessibility audit](#part-2-accessibility-audit), and my
+notes on the approach are in
+[Approach and further considerations](#approach-and-further-considerations).
+
 ## Running the Playwright tests
 
 Playwright and TypeScript tests, written as Gherkin scenarios with
@@ -23,6 +29,8 @@ scenarios that run axe on the calculator pages.
   (Node 23 is not supported). Developed with Node v26; the latest
   LTS release is recommended.
 - Git
+
+Developed and tested locally on Windows 11 with Visual Studio.
 
 ### Setup
 1. Go to the test project:
@@ -184,6 +192,119 @@ The accessibility findings, including a formal bug report (BUG-001), are in
 (screenshots and reports from Lighthouse, axe, WAVE and Accessibility Insights)
 is in [docs/evidence](docs/evidence/), with a log of each test in
 [docs/evidence/README.md](docs/evidence/README.md).
+
+## Approach and further considerations
+
+### Approach
+- **Playwright, TypeScript and Gherkin.** The scenarios are written in
+  plain English with playwright-bdd, so someone who does not read code can
+  still see what is checked. Examples tables hold the data, so adding a case
+  is one new row.
+- **Page objects hold locators and actions only; assertions live in the
+  steps.** Locators use roles and accessible names, with no CSS or XPath.
+  Fixtures give each step its page objects, and each test starts with a
+  fresh browser context, so tests do not depend on each other.
+- **Tags and npm scripts** (`npm run smoke`, `npm run accessibility` and so
+  on) let anyone run one kind of check with a short command, without needing
+  to know Playwright's command-line options.
+- **Quality checks.** TypeScript runs in strict mode, ESLint includes the
+  Playwright rules and catches unawaited promises, and an `.editorconfig`
+  keeps indentation the same in every editor and adds a final newline to each
+  code and config file. CI runs the type check, lint and the suite.
+  Dependabot proposes dependency updates. Every change went through a pull
+  request, and GitHub Copilot reviewed them as a reviewer, using the
+  instructions in `.github/copilot-instructions.md`.
+- **A readable git history.** Commit messages follow the rules in
+  [How to Write a Git Commit Message](https://cbea.ms/git-commit/): a short
+  imperative subject, a body that says what and why, and lines wrapped for
+  reading. A pull request template asks for what changed, why, how and how it
+  was tested, so each pull request explains itself. My pull requests were
+  squash merged, so each of my changes is one clear commit on `main`.
+
+### How I used AI
+I used AI tools, as the brief welcomes:
+- **Claude (Sonnet 5.5)** generated boilerplate and first drafts of the page
+  objects. I verified each one by hand, running the tests and checking the
+  locators against the live page.
+- **GitHub Copilot** reviewed the pull requests, using the instructions in
+  `.github/copilot-instructions.md`. I reviewed each comment thoroughly to
+  check that it was correct and made sense, replied to it and made the
+  changes myself, without using its automatic fix buttons.
+- I also used Claude to explain options and to draft wording, including parts
+  of this README. I edited the text and checked it against the repository.
+
+### What is covered
+The suite has 62 test cases on each browser, counting every example row, and
+runs on three browsers (186 tests): 1 smoke, 5 journeys, 19 validation, 32
+calculation and 5 accessibility.
+- **Smoke:** the start page loads with its title, heading and Start now
+  button.
+- **Journeys:** five click-through journeys from the start page to a result:
+  days worked per week, hours worked per week, annualised hours, a part-year
+  start, and irregular hours for one pay period.
+- **Calculations:** every working pattern has at least one test that checks
+  the entitlement the calculator returns. The days worked per week pattern
+  also covers the 28-day cap and part-year starting, leaving and both.
+- **Validation:** the error messages for blank answers, out-of-range
+  numbers, impossible dates and inconsistent dates.
+- **Accessibility:** axe checks the start, a question, a date question, an
+  error and an outcome page against WCAG 2.2 A and AA.
+
+### What is not covered
+- Part-year calculations for the hours, compressed hours, shifts and
+  annualised hours patterns, and a few less common validation rules.
+- Changing an answer or using the back button part way through.
+- The cookie banner itself. The tests set the "reject additional cookies"
+  preference before each test, so the banner never appears and no analytics
+  are sent, but nothing checks that the banner works.
+- The axe checks cover only part of WCAG 2.2, on five pages in one state
+  each. They do not judge content, such as whether alt text makes sense, and
+  they cannot test keyboard use, zoom or screen readers. Uncertain results
+  are not checked either. Those need manual testing, as the Part 2 audit
+  shows.
+
+### Things I noticed in the calculator
+These are observations from testing, not confirmed defects:
+- Hours worked per week of `0.4` is accepted, although the error for `0`
+  says "Please enter at least .5 hours worked".
+- Hours such as `37.25` are accepted, although the error message says "Do not
+  enter fractions" and the hint only mentions half-hours, for example 40.5.
+- The pay period question has no upper limit: 100000 hours returns an
+  entitlement of 12070 hours.
+
+### Working with a live site
+The tests run against gov.uk, so a wording change on the site can fail a
+test without any fault in the suite, and the expected messages and figures
+would then need updating. A few tests on Firefox have failed once and passed
+on a retry. In the one failure I read, the next page had not appeared within
+the five-second assertion timeout. CI retries failed tests twice, so
+those runs pass. I would look at the first failure of each flaky test before
+changing any timeouts.
+
+### CI choices
+CI uses two workers, as a middle ground between speed and load on a public
+site. Pull requests run Chromium only for faster feedback, and pushes to
+`main` run all three browsers. The axe report for each page is uploaded as a
+build artifact. A new axe release can add rules and fail pages that passed
+before. The lock file pins the versions, and Dependabot proposes updates in a
+pull request.
+
+### With more time
+- Add the other part-year patterns and the remaining validation rules.
+- Test changing an answer from the results summary and using the back
+  button part way through a calculation.
+- Cover more date boundaries, such as leap years and leave years that cross
+  a year end.
+- Test the cookie banner and the accessibility statement link. The suite
+  hides the banner for every test, so nothing checks it, and the statement is
+  a requirement for government services.
+- If a second service were added, I would move the shared fixtures, such as
+  the cookie setup, into a base fixtures file that each service extends.
+- If the repository grew into a monorepo with more packages or services, I
+  would weigh npm workspaces against pnpm workspaces. pnpm adds shared
+  dependency versions, a stricter `node_modules` and commands that run only
+  in the packages that changed.
+- Test the Part 2 page with screen readers such as JAWS, NVDA and VoiceOver.
 
 ## 🕗 Time Allocation
 
