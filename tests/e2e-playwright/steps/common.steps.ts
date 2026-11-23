@@ -12,11 +12,12 @@ Then('the {string} button should be visible', async ({ page }, name: string) => 
 
 Then('the page should have no accessibility violations', async ({ page, $testInfo }) => {
   const results = await runAxe(page);
+  const scenario = $testInfo.title.replace(/\W+/g, '-');
   createHtmlReport({
     results,
     options: {
       outputDir: 'axe-reports',
-      reportFileName: `${$testInfo.project.name}-${$testInfo.title.replace(/\W+/g, '-')}.html`,
+      reportFileName: `${$testInfo.project.name}-${scenario}-retry-${$testInfo.retry}.html`,
     },
   });
   expect(describeViolations(results)).toEqual([]);
