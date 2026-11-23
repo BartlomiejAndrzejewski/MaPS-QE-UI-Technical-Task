@@ -36,3 +36,9 @@ jobs:
         name: playwright-report
         path: tests/e2e-playwright/playwright-report/
         retention-days: 30
+    - uses: actions/upload-artifact@v7
+      if: ${{ !cancelled() }}
+      with:
+        name: axe-reports
+        path: tests/e2e-playwright/axe-reports/
+        retention-days: 30

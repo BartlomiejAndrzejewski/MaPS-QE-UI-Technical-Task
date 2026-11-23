@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "^20.19.0 || ^22.13.0 || >=24"
+    "node": "^22.13.0 || >=24"
   },
   "scripts": {
     "test": "bddgen && playwright test",
@@ -13,9 +13,12 @@
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.6",
+    "axe-core": "^4.14.1",
+    "axe-html-reporter": "^2.2.11",
     "eslint": "^10.15.0",
     "eslint-plugin-playwright": "^2.12.2",
     "playwright-bdd": "^9.2.1",
