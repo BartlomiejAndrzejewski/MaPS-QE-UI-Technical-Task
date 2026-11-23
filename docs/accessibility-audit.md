@@ -95,10 +95,10 @@ A formal bug report is at the end of this file ([BUG-001](#bug-001)).
 
 In a real project I would raise each finding as a ticket in the team's tracker
 and attach the screenshots to it, instead of committing them to the code
-repository. The Playwright suite already runs axe against the GOV.UK calculator
-pages in CI, and I would extend that to every page of a service. I kept the
-audit and the evidence in this repository so they can be reviewed with the
-submission.
+repository. The Playwright suite already runs axe in CI against five
+representative GOV.UK calculator pages, and I would extend that to every page
+of a service. I kept the audit and the evidence in this repository so they can
+be reviewed with the submission.
 
 ## BUG-001
 
