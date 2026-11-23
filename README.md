@@ -50,8 +50,12 @@ git ignores. Don't edit them: change the feature files and steps instead.
 
 Useful variations:
 ```bash
-npm test -- --project=chromium             # one browser only
-npm test -- --headed                       # watch the browser
+npm test                                   # everything, on all three browsers
+npm run chromium                           # Chromium only
+npm run firefox                            # Firefox only
+npm run webkit                             # WebKit only
+npm run headed                             # watch the browser
+npm run ui                                 # open Playwright's UI mode
 npm run smoke                              # smoke scenarios only
 npm run regression                         # the full regression suite
 npm run journey                            # click-through journeys only

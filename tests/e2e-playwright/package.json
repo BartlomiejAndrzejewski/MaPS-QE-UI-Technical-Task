@@ -7,6 +7,11 @@
   },
   "scripts": {
     "test": "bddgen && playwright test",
+    "ui": "bddgen && playwright test --ui",
+    "chromium": "bddgen && playwright test --project=chromium",
+    "firefox": "bddgen && playwright test --project=firefox",
+    "webkit": "bddgen && playwright test --project=webkit",
+    "headed": "bddgen && playwright test --headed",
     "smoke": "bddgen && playwright test --grep @smoke",
     "regression": "bddgen && playwright test --grep @regression",
     "journey": "bddgen && playwright test --grep @journey",
