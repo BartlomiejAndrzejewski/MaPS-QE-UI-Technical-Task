@@ -1,0 +1,9 @@
+- main:
+  - heading "Calculate holiday entitlement" [level=1]
+  - article:
+    - paragraph: "Use this tool to calculate holiday entitlement for:"
+    - list:
+      - listitem: a full leave year
+      - listitem: part of a leave year, if the job started or finished part way through the year
+    - paragraph: If an employee works irregular hours or for part of the year, you also use this calculator to work out how much leave they’ve built up (‘accrued’) over a pay period.
+    - button "Start now"

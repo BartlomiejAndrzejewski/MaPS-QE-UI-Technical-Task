@@ -1,0 +1,10 @@
+- main:
+  - text: Calculate holiday entitlement
+  - group "Does the employee work irregular hours or for part of the year?":
+    - heading "Does the employee work irregular hours or for part of the year?" [level=1]
+    - text: ‘Irregular hours’ means the number of hours an employee works in a pay period often or always changes. ‘Part of the year’ means there are periods of at least a week in a leave year where the employee does not need to work and is not paid.
+    - radio "Yes"
+    - text: "Yes"
+    - radio "No"
+    - text: "No"
+  - button "Continue"

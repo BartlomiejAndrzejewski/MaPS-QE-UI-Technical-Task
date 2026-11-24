@@ -1,0 +1,11 @@
+- main:
+  - text: Calculate holiday entitlement
+  - group "What was the employment start date?":
+    - heading "What was the employment start date?" [level=1]
+    - text: Day
+    - textbox "Day"
+    - text: Month
+    - textbox "Month"
+    - text: Year
+    - textbox "Year"
+  - button "Continue"
