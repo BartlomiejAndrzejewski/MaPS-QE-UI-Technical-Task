@@ -1,0 +1,8 @@
+- main:
+  - 'heading "Calculate holiday entitlement: Information based on your answers" [level=1]'
+  - paragraph: /The statutory holiday entitlement is [\d.]+ days holiday\./
+  - paragraph: "The employer:"
+  - list:
+    - listitem: can include bank and public holidays as part of the statutory entitlement
+    - listitem: can choose to round up the holiday entitlement, but cannot round it down
+    - listitem: can provide more paid holiday - this will be in the employment contract and is called ‘contractual leave entitlement’

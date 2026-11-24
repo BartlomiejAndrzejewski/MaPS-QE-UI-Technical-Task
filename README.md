@@ -22,7 +22,7 @@ them. The suite contains a smoke scenario for the start page, five
 click-through journeys through the calculator, validation scenarios that
 check the error messages for invalid answers, calculation scenarios that
 check the entitlement for different working patterns, and accessibility
-scenarios that run axe on the calculator pages.
+scenarios that run axe and match an ARIA snapshot on the calculator pages.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) with npm: version 22.13+ or 24+
@@ -59,6 +59,15 @@ git ignores. Don't edit them: change the feature files and steps instead.
 The tests run against https://www.gov.uk by default. Set the `BASE_URL`
 environment variable to use another address.
 
+The accessibility scenarios compare each page with an ARIA snapshot in
+`tests/e2e-playwright/snapshots`, in one folder for each feature folder. Each
+snapshot keeps a page's heading, text, controls, error alert and buttons, and
+leaves out lists of links to other pages and the answers summary, which
+change more often. If a page changes on purpose, run
+`npm run accessibility -- --update-snapshots`. It rewrites only the snapshots
+that no longer match, as the full page, so trim those files again. Use
+`--update-snapshots=missing` to create the snapshot for a new page.
+
 Useful variations:
 ```bash
 npm test                                   # everything, on all three browsers
@@ -88,6 +97,7 @@ added alongside holiday entitlement.
 | `pages/` | Page objects, with locators and actions only |
 | `fixtures/` | Fixtures that give each step its page objects |
 | `support/` | Shared helpers and constants, such as routes and cookie preferences |
+| `snapshots/` | ARIA snapshots of the pages, in one folder for each feature folder |
 
 ### Tags
 | Kind | Tags | Use |
@@ -248,7 +258,8 @@ calculation and 5 accessibility.
 - **Validation:** the error messages for blank answers, out-of-range
   numbers, impossible dates and inconsistent dates.
 - **Accessibility:** axe checks the start, a question, a date question, an
-  error and an outcome page against WCAG 2.2 A and AA.
+  error and an outcome page against WCAG 2.2 A and AA, and an ARIA snapshot
+  checks the structure of each page's main content.
 
 ### What is not covered
 - Part-year calculations for the hours, compressed hours, shifts and
@@ -295,6 +306,8 @@ pull request.
   button part way through a calculation.
 - Cover more date boundaries, such as leap years and leave years that cross
   a year end.
+- Extend the axe checks and ARIA snapshots to more calculator pages, such as
+  the leave year start, the pay period hours and the shift questions.
 - Test the cookie banner and the accessibility statement link. The suite
   hides the banner for every test, so nothing checks it, and the statement is
   a requirement for government services.

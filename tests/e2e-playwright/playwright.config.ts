@@ -11,6 +11,9 @@ const testDir = defineBddConfig({
  */
 export default defineConfig({
   testDir,
+  /* Aria snapshots live in a committed folder, not in the generated tests. */
+  snapshotDir: './snapshots',
+  snapshotPathTemplate: '{snapshotDir}/{testFileDir}/{arg}{ext}',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

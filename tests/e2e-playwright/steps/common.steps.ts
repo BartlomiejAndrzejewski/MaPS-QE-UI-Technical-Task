@@ -22,3 +22,7 @@ Then('the page should have no accessibility violations', async ({ page, $testInf
   });
   expect(describeViolations(results)).toEqual([]);
 });
+
+Then('the page structure should match the {string} snapshot', async ({ page }, name: string) => {
+  await expect(page.getByRole('main')).toMatchAriaSnapshot({ name: `${name}.aria.yml` });
+});
