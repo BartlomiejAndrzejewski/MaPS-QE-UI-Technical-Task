@@ -29,15 +29,21 @@ scenarios that run axe and match an ARIA snapshot on the calculator pages.
   (Node 23 is not supported). Developed with Node v26; the latest
   LTS release is recommended.
 - Git
+- An internet connection: the tests run against gov.uk, and the setup
+  downloads the Playwright browsers, which take several hundred megabytes. On
+  Linux, install the browsers with `npx playwright install --with-deps` so
+  that the system libraries are included.
 
-Developed and tested locally on Windows 11 with Visual Studio.
+Developed and tested locally on Windows 11 with Visual Studio. CI runs on
+Ubuntu.
 
 ### Setup
 1. Go to the test project:
    ```bash
    cd tests/e2e-playwright
    ```
-2. Install dependencies:
+2. Install dependencies, in this folder and not the repository root. This
+   installs everything the tests need, including playwright-bdd:
    ```bash
    npm install
    ```
@@ -108,8 +114,9 @@ added alongside holiday entitlement.
 
 ### Cookie banner
 Each test starts with the GOV.UK cookie preference set to "reject additional
-cookies" (see `support/cookies.ts`), so the banner never appears and test runs
-do not send analytics.
+cookies" (see `support/cookies.ts`), so the banner never appears, the tests do
+not have to deal with it, and test runs do not send analytics. The banner
+itself is not tested.
 
 ### View the report
 ```bash
@@ -214,6 +221,10 @@ is in [docs/evidence](docs/evidence/), with a log of each test in
   steps.** Locators use roles and accessible names, with no CSS or XPath.
   Fixtures give each step its page objects, and each test starts with a
   fresh browser context, so tests do not depend on each other.
+- **The cookie banner is switched off for every test.** Each test starts with
+  the "reject additional cookies" preference already set, so the banner never
+  appears, test runs stay stable and no analytics are sent. Nothing checks the
+  banner itself.
 - **Tags and npm scripts** (`npm run smoke`, `npm run accessibility` and so
   on) let anyone run one kind of check with a short command, without needing
   to know Playwright's command-line options.
@@ -294,11 +305,9 @@ changing any timeouts.
 
 ### CI choices
 CI uses two workers, as a middle ground between speed and load on a public
-site. Pull requests run Chromium only for faster feedback, and pushes to
-`main` run all three browsers. The axe report for each page is uploaded as a
-build artifact. A new axe release can add rules and fail pages that passed
-before. The lock file pins the versions, and Dependabot proposes updates in a
-pull request.
+site. A new axe release can add rules and fail pages that passed before. The
+lock file pins the versions, and Dependabot proposes updates in a pull
+request.
 
 ### With more time
 - Add the other part-year patterns and the remaining validation rules.
@@ -308,9 +317,7 @@ pull request.
   a year end.
 - Extend the axe checks and ARIA snapshots to more calculator pages, such as
   the leave year start, the pay period hours and the shift questions.
-- Test the cookie banner and the accessibility statement link. The suite
-  hides the banner for every test, so nothing checks it, and the statement is
-  a requirement for government services.
+- Test the cookie banner, which the suite hides for every test.
 - If a second service were added, I would move the shared fixtures, such as
   the cookie setup, into a base fixtures file that each service extends.
 - If the repository grew into a monorepo with more packages or services, I
